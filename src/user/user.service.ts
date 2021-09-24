@@ -38,7 +38,7 @@ export class UserService {
   }
 
   async findOne(id: string): Promise<User> {
-    return this.userModel.findOne({ _id: id });
+    return this.userModel.findOne({ _id: id }).populate('favorite');
   }
 
   async findByEmail(email: string): Promise<User> {

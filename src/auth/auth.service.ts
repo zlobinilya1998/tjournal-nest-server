@@ -19,6 +19,9 @@ export class AuthService {
     const user = await this.userService.create(userDto);
     return this.generateToken(user);
   }
+  async getUser(user): Promise<any> {
+    return this.userService.findByEmail(user.email);
+  }
   async generateToken(user): Promise<any> {
     return {
       token: this.jwtService.sign({ ...user._doc }),
